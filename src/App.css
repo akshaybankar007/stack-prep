@@ -1,0 +1,204 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-main: #0f172a;       
+    --bg-card: #1e293b;       
+    --text-main: #f8fafc;     
+    --text-secondary: #94a3b8;    
+    --accent-brandcolor: #17b5dc;   
+    --accent-hover: #128ecc;  
+    --error-msg: #ef4444;        
+}
+
+body{
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.app-header{
+    text-align: center;
+    margin-bottom: 40px;
+}
+.app-header h1{
+    color: var(--accent-brandcolor);
+    margin-bottom: 10px;
+}
+.app-header p{
+    color: var(--text-secondary);
+}
+.app-container{
+    display: flex;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+    align-items: flex-start;
+
+}
+.note-creator{
+    flex: 1;
+    background-color: var(--bg-card);
+    padding: 25px;
+    border-radius: 20px;
+    position: sticky;
+    top: 20px;
+}
+.notes-grid{
+    flex: 2;
+}
+.notes-grid h2{
+    grid-column: 1 / -1;
+    margin-bottom: 5px;
+}
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+}
+.input-group label{
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 9px;
+}
+input[type = "text"],
+textarea{
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--bg-main);
+    border: 1px solid #333;
+    border-radius: 10px;
+    font-family: inherit;
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+input[type= "text" ]:focus,
+textarea:focus{
+    outline: none;
+    border-color: var(--accent-brandcolor);
+}
+textarea{
+    resize: vertical;
+}
+.primary-btn{
+    width: 100%;
+    padding: 12px;
+    background-color: var(--accent-brandcolor);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.4s ease, transition 0.4s ease;
+}
+.primary-btn:hover{
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+/* THE NOTES GRID & CARDS */
+.notes-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    align-content: start;
+}
+.note-card{
+    background-color: var(--bg-card);
+    border-radius: 10px;
+    padding: 20px;
+    border: 1px solid #333;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-height: 250px; 
+    overflow: hidden; 
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5); 
+}
+.note-header h3 {
+    color: var(--accent-brandcolor); 
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.note-tag {
+    font-size: 0.8rem;
+    background-color: rgba(23, 181, 220, 0.1);
+    color: var(--accent-brandcolor);
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+.note-body{
+    color: var(--text-main);
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.note-footer{
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border-top: 1px solid #333; 
+}
+.note-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.delete-btn {
+    background: transparent;
+    color: var(--error-msg);
+    border: 1px solid var(--error-msg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+.delete-btn:hover {
+    background-color: var(--error-msg);
+    color: white;
+}
+.app-footer{
+    text-align: center;
+    bottom: 0;
+    padding-top: 200px;
+    border-top: 1px solid #333;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+/* mobile responsiveness */
+@media (max-width: 768px) {
+    .app-container{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .note-creator{
+        width: 100%;
+        position: relative;
+        top: 0;
+    }
+    .notes-grid{
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+    .app-header{
+        font-size: 1rem;
+    }
+    body{
+        padding: 15px;
+    }
+}
