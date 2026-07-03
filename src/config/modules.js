@@ -8,7 +8,6 @@ import { jsSyllabus } from '../data/jsSyllabus';
 import { jsContent } from '../data/jsContent';
 import { reactSyllabus } from '../data/reactSyllabus';
 import { reactContent } from '../data/reactContent';
-// Add these imports:
 import { nodeSyllabus } from '../data/nodeSyllabus';
 import { nodeContent } from '../data/nodeContent';
 import { expressSyllabus } from '../data/expressSyllabus';
@@ -17,45 +16,38 @@ import { mongoSyllabus } from '../data/mongoSyllabus';
 import { mongoContent } from '../data/mongoContent';
 import { sqlSyllabus } from '../data/sqlSyllabus';
 import { sqlContent } from '../data/sqlContent';
+// Add these imports:
+import { authSyllabus } from '../data/authSyllabus';
+import { authContent } from '../data/authContent';
+import { systemSyllabus } from '../data/systemSyllabus';
+import { systemContent } from '../data/systemContent';
 
 export const modules = [
-  { slug: 'java', label: 'Java Mastery', title: 'Java Preparation Module', description: 'Complete syllabus for cracking Java-based interviews.', syllabus: javaSyllabus, content: javaContent },
-  { slug: 'html', label: 'HTML', title: 'HTML Preparation Module', description: 'Master semantic HTML, forms, accessibility, and modern HTML5 APIs.', syllabus: htmlSyllabus, content: htmlContent },
-  { slug: 'css', label: 'CSS', title: 'CSS Preparation Module', description: 'Complete CSS syllabus covering layout, responsive design, and animations.', syllabus: cssSyllabus, content: cssContent },
-  { slug: 'javascript', label: 'JavaScript', title: 'JavaScript Preparation Module', description: 'Master core JS, ES6+, async programming, and DOM manipulation.', syllabus: jsSyllabus, content: jsContent },
-  { slug: 'react', label: 'React', title: 'React Preparation Module', description: 'Advanced React concepts, hooks, state management, and performance optimization.', syllabus: reactSyllabus, content: reactContent },
+  { slug: 'java', label: 'Java', title: 'Java Preparation', description: 'Complete syllabus for Java.', syllabus: javaSyllabus, content: javaContent },
+  { slug: 'html', label: 'HTML', title: 'HTML Preparation', description: 'Master semantic HTML and APIs.', syllabus: htmlSyllabus, content: htmlContent },
+  { slug: 'css', label: 'CSS', title: 'CSS Preparation', description: 'Layout, responsive design, animations.', syllabus: cssSyllabus, content: cssContent },
+  { slug: 'javascript', label: 'JavaScript', title: 'JavaScript Preparation', description: 'Core JS, ES6+, async programming.', syllabus: jsSyllabus, content: jsContent },
+  { slug: 'react', label: 'React', title: 'React Preparation', description: 'Hooks, state management, optimization.', syllabus: reactSyllabus, content: reactContent },
+  { slug: 'node', label: 'Node.js', title: 'Node.js Preparation', description: 'Server-side JS, event loop, streams.', syllabus: nodeSyllabus, content: nodeContent },
+  { slug: 'express', label: 'Express.js', title: 'Express Preparation', description: 'REST APIs, middleware, routing.', syllabus: expressSyllabus, content: expressContent },
+  { slug: 'mongodb', label: 'MongoDB', title: 'MongoDB Preparation', description: 'NoSQL, aggregation, Mongoose.', syllabus: mongoSyllabus, content: mongoContent },
+  { slug: 'sql', label: 'SQL', title: 'SQL Preparation', description: 'Relational databases, queries, joins.', syllabus: sqlSyllabus, content: sqlContent },
   // Add these new objects:
   {
-    slug: 'node',
-    label: 'Node.js',
-    title: 'Node.js Preparation Module',
-    description: 'Master server-side JS, the event loop, streams, and async architectures.',
-    syllabus: nodeSyllabus,
-    content: nodeContent,
+    slug: 'auth',
+    label: 'Auth & Security',
+    title: 'Authentication & Security',
+    description: 'Master JWT, Cookies, XSS, CSRF, and secure backend architectures.',
+    syllabus: authSyllabus,
+    content: authContent,
   },
   {
-    slug: 'express',
-    label: 'Express.js',
-    title: 'Express Preparation Module',
-    description: 'Learn REST APIs, middleware, routing, and backend architecture.',
-    syllabus: expressSyllabus,
-    content: expressContent,
-  },
-  {
-    slug: 'mongodb',
-    label: 'MongoDB',
-    title: 'MongoDB Preparation Module',
-    description: 'Master NoSQL, schema design, aggregation pipelines, and Mongoose.',
-    syllabus: mongoSyllabus,
-    content: mongoContent,
-  },
-  {
-    slug: 'sql',
-    label: 'SQL / RDBMS',
-    title: 'SQL Preparation Module',
-    description: 'Master relational databases, complex queries, joins, and database design.',
-    syllabus: sqlSyllabus,
-    content: sqlContent,
+    slug: 'system-design',
+    label: 'System Design',
+    title: 'System Design Basics',
+    description: 'Scaling, Load Balancers, Caching, CAP Theorem, and Microservices.',
+    syllabus: systemSyllabus,
+    content: systemContent,
   }
 ];
 
