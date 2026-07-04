@@ -28,13 +28,13 @@ export default function Dashboard() {
 
   return (
     <div className="module-container">
-      <h2>Dashboard</h2>
+      <h2> .. </h2>
       
       <div className="insight-message">
         <p>"Mastery is not measured by completion bars, but by comprehension. Focus on architectural understanding, build ruthlessly, and grasp the core mechanics."</p>
       </div>
 
-      <h3 className="dashboard-section-title">Module Progress</h3>
+      <h3 className="dashboard-section-title">           Module</h3>
       <div className="dashboard-grid">
         {stats.map((mod) => (
           <Link key={mod.slug} to={`/${mod.slug}`} className="dashboard-card">

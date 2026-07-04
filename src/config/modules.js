@@ -31,23 +31,22 @@ import { gitContent } from '../data/gitContent';
 import { testingSyllabus } from '../data/testingSyllabus';
 import { testingContent } from '../data/testingContent';
 
-// Operating Systems (generated earlier)
+// Operatinier)
 import { osSyllabus } from '../data/osSyllabus';
 import { osContent } from '../data/osContent';
 
-// Computer Networks (generated earlier)
+// Computer Netneratier)
 import { cnSyllabus } from '../data/cnSyllabus';
 import { cnContent } from '../data/cnContent';
 
-// Linux (generated earlier)
+
 import { linuxSyllabus } from '../data/linuxSyllabus';
 import { linuxContent } from '../data/linuxContent';
 
-// DBMS (generated earlier)
 import { dbmsSyllabus } from '../data/dbmsSyllabus';
 import { dbmsContent } from '../data/dbmsContent';
 
-// OOPs (generated earlier)
+
 import { oopsSyllabus } from '../data/oopsSyllabus';
 import { oopsContent } from '../data/oopsContent';
 
@@ -56,7 +55,7 @@ export const modules = [
   { slug: 'html', label: 'HTML', title: 'HTML Preparation', description: 'Master semantic HTML and APIs.', syllabus: htmlSyllabus, content: htmlContent },
   { slug: 'css', label: 'CSS', title: 'CSS Preparation', description: 'Layout, responsive design, animations.', syllabus: cssSyllabus, content: cssContent },
   { slug: 'javascript', label: 'JavaScript', title: 'JavaScript Preparation', description: 'Core JS, ES6+, async programming.', syllabus: jsSyllabus, content: jsContent },
-  { slug: 'react', label: 'React', title: 'React Preparation', description: 'Hooks, state management, optimization.', syllabus: reactSyllabus, content: reactContent },
+  { slug: 'react', label: 'React.js', title: 'React Preparation', description: 'Hooks, state management, optimization.', syllabus: reactSyllabus, content: reactContent },
   { slug: 'node', label: 'Node.js', title: 'Node.js Preparation', description: 'Server-side JS, event loop, streams.', syllabus: nodeSyllabus, content: nodeContent },
   { slug: 'express', label: 'Express.js', title: 'Express Preparation', description: 'REST APIs, middleware, routing.', syllabus: expressSyllabus, content: expressContent },
   { slug: 'mongodb', label: 'MongoDB', title: 'MongoDB Preparation', description: 'NoSQL, aggregation, Mongoose.', syllabus: mongoSyllabus, content: mongoContent },
@@ -64,7 +63,7 @@ export const modules = [
   
   {
     slug: 'auth',
-    label: 'Auth & Security',
+    label: 'Authentication & Security',
     title: 'Authentication & Security',
     description: 'Master JWT, Cookies, XSS, CSRF, and secure backend architectures.',
     syllabus: authSyllabus,
@@ -90,17 +89,17 @@ export const modules = [
   },
   {
     slug: 'testing',
-    label: 'Testing',
+    label: 'Software Testing',
     title: 'Software Testing',
     description: 'Unit, integration, E2E testing with Jest and React Testing Library.',
     syllabus: testingSyllabus,
     content: testingContent,
   },
 
-  // Previously empty modules – now filled with generated content:
+  // Prey empty modules – now filled with generated content:
   {
     slug: 'os',
-    label: 'OS',
+    label: 'Operating System',
     title: 'Operating Systems',
     description: 'Processes, Threads, Memory Management, and Concurrency.',
     syllabus: osSyllabus,
@@ -108,7 +107,7 @@ export const modules = [
   },
   {
     slug: 'cn',
-    label: 'Networks',
+    label: 'Computer Networks',
     title: 'Computer Networks',
     description: 'OSI Model, TCP/IP, Protocols, and Routing Architecture.',
     syllabus: cnSyllabus,
@@ -116,7 +115,7 @@ export const modules = [
   },
   {
     slug: 'linux',
-    label: 'Linux',
+    label: 'Linux Fundamentals',
     title: 'Linux Fundamentals',
     description: 'Commands, File Permissions, Bash Scripting, and Architecture.',
     syllabus: linuxSyllabus,
@@ -124,7 +123,7 @@ export const modules = [
   },
   {
     slug: 'dbms',
-    label: 'DBMS',
+    label: 'Database Management Systems',
     title: 'Database Management Systems',
     description: 'Normalization, ACID Properties, Transactions, and Relational Theory.',
     syllabus: dbmsSyllabus,
@@ -132,7 +131,7 @@ export const modules = [
   },
   {
     slug: 'oops',
-    label: 'OOPs',
+    label: 'Object-Oriented Programming',
     title: 'Object-Oriented Programming',
     description: 'Classes, Inheritance, Polymorphism, and Design Patterns.',
     syllabus: oopsSyllabus,
